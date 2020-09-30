@@ -137,10 +137,10 @@ contract SupplyChain {
         paidEnough(sku)
         checkValue(sku)
     {
-        items[sku].seller.transfer(items[sku].price);
         items[sku].buyer = msg.sender;
         items[sku].state = State.Sold;
         emit LogSold(sku);
+        items[sku].seller.transfer(items[sku].price);
     }
 
     /* Add 2 modifiers to check if the item is sold already, and that the person calling this function
